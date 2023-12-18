@@ -1,115 +1,122 @@
-import React from 'react';
-import { Button, Form, Input, InputNumber,Select } from 'antd';
-import { Link } from 'react-router-dom';
-const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
-};
-const { Option } = Select;
-const formItemLayout = {
-  labelCol: {
-    span: 6,
-  },
-  wrapperCol: {
-    span: 14,
-  },
-};
-/* eslint-disable no-template-curly-in-string */
+import React from "react";
+import {
+  Button,
+  FormControl,
+  Input,
+  InputLabel,
+  Select,
+  MenuItem,
+  Typography,
+  Box,
+} from "@mui/material";
+import { Link } from "react-router-dom";
+import axios from "axios"; // Import Axios
+import "../App.css";
+
 const validateMessages = {
-  required: '${label} is required!',
+  required: "This field is required!",
   types: {
-    email: '${label} is not a valid email!',
-    number: '${label} is not a valid number!',
-  },
-  number: {
-    range: '${label} must be between ${min} and ${max}',
+    email: "Not a valid email!",
   },
 };
-/* eslint-enable no-template-curly-in-string */
 
-const onFinish = (values) => {
-  console.log(values);
-};
+const Register = () => {
+  const onFinish = async (values) => {
+    try {
+      const response = await axios.post("YOUR_REGISTRATION_API_ENDPOINT", values, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-function Register() {
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error submitting registration:", error);
+    }
+  };
+
   return (
-    <Form
-    {...layout}
-    name="nest-messages"
-    onFinish={onFinish}
-    style={{
-      maxWidth: 300,
+    <Box
+    sx={{
+      minHeight: "150vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      background: 'rgb(28, 2, 75)' ,// Set the background color here
     }}
-    validateMessages={validateMessages}
   >
-    <Form.Item
-      name={['user', 'name']}
-      label="Name"
-      rules={[
-        {
-          required: true,
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
-    <Form.Item
-      name={['user', 'email']}
-      label="Email"
-      rules={[
-        {
-          type: 'email',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
     
-    
-    <Form.Item name={['user', 'phone number']} label="phone number">
-      <Input />
-    </Form.Item>
-    <Form.Item name={['user', 'introduction']} label="Password">
-      <Input />
-    </Form.Item>
-    <Form.Item name={['user', 'introduction']} label="confirm Password">
-      <Input />
-    </Form.Item>
-    <Form.Item
-      name="select"
-      label="Select"
-      hasFeedback
-      rules={[
-        {
-          required: true,
-          message: 'Please select your country!',
-        },
-      ]}
-    >
-      <Select placeholder="Please select a country">
-        <Option value="1">Level 1</Option>
-        <Option value="2">Level 2</Option>
-        <Option value="3">Level 3</Option>
-        <Option value="4">Level 4</Option>
-      </Select>
-    </Form.Item>
-    <Form.Item
-      wrapperCol={{
-        ...layout.wrapperCol,
-        offset: 8,
-      }}
-    >
-      <Link to="/login"><Button type="primary" htmlType="submit">
-        Submit
-      </Button></Link>
-    </Form.Item>
-  </Form>
-);
-  
-}
+      <div className="form">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            onFinish({
+              name: e.target.name.value,
+              email: e.target.email.value,
+              phoneNumber: e.target.phoneNumber.value,
+              password: e.target.password.value,
+              confirmPassword: e.target.confirmPassword.value,
+              select: e.target.select.value,
+            });
+          }}
+          style={{
+            width: "100%",
+            maxWidth: "400px",
+             // Adjust the maximum width as needed
+            padding: "20px",
+            borderRadius: "20px",
+            color:"white",
+            
+background: "rgba(255, 255, 255, 0.23)",
 
-export default Register
+boxshadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+backdropfilter: "blur(6.2px)",
+webkitbackdropfilter: "blur(6.2px)",
+border: '1px solid rgba(255, 255, 255, 0.35)',
+          }}
+         
+        >
+          <Typography variant="h4" align="center" gutterBottom>
+            Register
+          </Typography>
+          <FormControl fullWidth margin="normal">
+            <InputLabel htmlFor="name"
+            sx={{ color:"white"}}>Name</InputLabel>
+            <Input id="name" required />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel htmlFor="email"  sx={{ color:"white"}}>Email</InputLabel>
+            <Input id="email" type="email" required />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel htmlFor="phoneNumber"  sx={{ color:"white"}}>Phone Number</InputLabel>
+            <Input id="phoneNumber" required />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel htmlFor="password"  sx={{ color:"white"}}>Password</InputLabel>
+            <Input id="password" type="password" required />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel htmlFor="confirmPassword"  sx={{ color:"white"}}>Confirm Password</InputLabel>
+            <Input id="confirmPassword" type="password" required />
+          </FormControl>
+          <FormControl fullWidth margin="normal">
+            <InputLabel htmlFor="select"  sx={{ color:"white"}}>Select</InputLabel>
+            <Select id="select" required>
+              <MenuItem value="1">Level 1</MenuItem>
+              <MenuItem value="2">Level 2</MenuItem>
+              <MenuItem value="3">Level 3</MenuItem>
+              <MenuItem value="4">Level 4</MenuItem>
+            </Select>
+          </FormControl>
+         <Link to="/pay"><button >Submit</button></Link> 
+          <Typography variant="body2" align="center" sx={{ marginTop: "10px" }}>
+            <Link to="/login">Already have an account? Login</Link>
+          </Typography>
+        </form>
+      </div>
+    </Box>
+  );
+};
+
+export default Register;

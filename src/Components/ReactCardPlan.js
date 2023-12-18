@@ -8,6 +8,7 @@ function ReactCardPlan({plan,features}) {
                 <div class="card-body">
                     <h5 class="card-title text-muted text-uppercase text-center">{plan.plan}</h5>
                     <h6 class="card-price text-center"> ₹{plan.Fee}<span class="period">/month</span></h6>
+                    <p class="card-title text-muted text-uppercase text-center"> ₹{plan.Fee2}<span class="period">/year</span></p>
                     <hr />
                     <Link to="/register"> <button class="btn btn-block btn-primary text-uppercase" >Subscribe</button></Link><br/>
                     <ul class="fa-ul">

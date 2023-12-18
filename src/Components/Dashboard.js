@@ -26,7 +26,7 @@ const items = [
     getItem('Level 4', '6'),
   ]),
   getItem('Team', 'sub2', <TeamOutlined />, [getItem('Level 1', '6'), getItem('Level 2', '8'),getItem('Level 3', '9'),getItem('Level 4', '10')]),
-  getItem('Settings', '11', <FileOutlined />),
+  getItem('Settings', '11', <FileOutlined />),  getItem('Logout', '12', <FileOutlined />),
 ];
 
 function Dashboard() {

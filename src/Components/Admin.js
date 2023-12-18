@@ -36,12 +36,12 @@ const Login = () => {
       
         <div className="welcome">
            <h2>Welcome, {username}!</h2>
-    
+          
           
         </div>
       ) : (
         <div className="login-form">
-          <h2>Login</h2>
+          <h2>Admin</h2>
           <label>
             Username:
             <input
