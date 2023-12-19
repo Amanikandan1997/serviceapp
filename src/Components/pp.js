@@ -18,7 +18,7 @@ export default async function displayRazorpay() {
         alert("ORDER ID :: " + response.razorpay_order_id);
       },
       prefill: {
-        name: "Anirudh Jwala",
+        name: "Anirudh",
         email: "anirudh@gmail.com",
         contact: "9999999999",
       },

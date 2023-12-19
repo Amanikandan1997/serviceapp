@@ -3,6 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "../App.css";
 import Dashboard from "./Dashboard";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -61,6 +62,7 @@ const Login = () => {
             />
           </label>
           <button onClick={handleLogin}>Login</button>
+          <Link to="/">Create a new account? Subscribe</Link>
         </div>
       )}
     </div>

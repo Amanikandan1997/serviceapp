@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 function ReactCardPlan({plan,features}) {
     return (
         <div className="col-sm-3">
+
+           
             <div class="card mb-5 mb-lg-0">
                 <div class="card-body">
                     <h5 class="card-title text-muted text-uppercase text-center">{plan.plan}</h5>

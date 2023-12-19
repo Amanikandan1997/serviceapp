@@ -42,7 +42,7 @@ const Register = () => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      background: 'rgb(28, 2, 75)' ,// Set the background color here
+      background: 'rgb(18 24 88)' ,// Set the background color here
     }}
   >
     

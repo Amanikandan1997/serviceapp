@@ -3,18 +3,25 @@ import {plans,features} from '../Data'
 import ReactCardPlan from './ReactCardPlan';
 import { Link } from 'react-router-dom'
 import "../App.css"
+import Hero from './Hero';
+import Header from './Header'
+
+
 
 function ReactPricingCard() {
     console.log(plans);
     console.log(features);
     return (
+      <>
+     <Header/>
+      <Hero/>
         <div  className="pricing py-5">
-         
+        
         <div className="container">
-            <h2>Already Register</h2>
-        <Link to="/login"><button class="btn btn-block btn-primary text-uppercase btn-size-10px" >Login</button></Link><br/>
-            <div className="row">
            
+        <h2 className='container'>Pricing List</h2>
+            <div className="row">
+          
                 {
                     plans.map((plan,index) => {
                         return <ReactCardPlan key ={index} plan = {plan} features={features} />
@@ -24,6 +31,8 @@ function ReactPricingCard() {
             </div>
         </div>
         </div>
+    
+        </>
     )
 }
 
