@@ -12,6 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import axios from "axios"; // Import Axios
 import "../App.css";
+import Video from "./assets/video.mp4"
 
 const validateMessages = {
   required: "This field is required!",
@@ -42,9 +43,26 @@ const Register = () => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      background: 'rgb(18 24 88)' ,// Set the background color here
+      position: "relative", // Set position to relative
     }}
   >
+    {/* Add the video component for the background */}
+    <video
+      autoPlay
+      loop
+      muted
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        zIndex: -1, // Ensure it stays behind other elements
+      }}
+    >
+      {/* Provide the path to your video file */}
+      <source src={Video} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
     
       <div className="form">
         <form

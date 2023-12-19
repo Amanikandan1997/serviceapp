@@ -3,6 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import "../App.css";
 import Dashboard from "./Dashboard";
+import Video from "./assets/video.mp4"
 import { Link } from "react-router-dom";
 
 const Login = () => {
@@ -33,16 +34,33 @@ const Login = () => {
 
   return (
     <div className="login">
+      <video
+      autoPlay
+      loop
+      muted
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        zIndex: -1, // Ensure it stays behind other elements
+      }}
+    >
+      {/* Provide the path to your video file */}
+      <source src={Video} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
       {loggedIn ? (
       
         <div className="welcome">
            <h2>Welcome, {username}!</h2>
-    
+           <Link to="/"><button class="round" >Log out</button></Link>
           
         </div>
       ) : (
-        <div className="login-form">
-          <h2>Login</h2>
+        <div className="login-form"
+        >
+              <h2>Login</h2>
           <label>
             Username:
             <input
