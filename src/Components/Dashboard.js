@@ -7,7 +7,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import Footer1 from './Footer';
+import Add from './add';
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -72,7 +72,7 @@ function Dashboard() {
                 background: colorBgContainer,
               }}
             >
-             <Footer1/>
+             <Add/>
             </div>
           </Content>
           <Footer
