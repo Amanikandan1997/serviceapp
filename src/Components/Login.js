@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 import Dashboard from "./Dashboard";
 import Video from "./assets/video.mp4"
@@ -11,17 +11,25 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
+  const navigate = useNavigate();
+
   const handleLogin = () => {
     axios
       .post("https://dummyjson.com/auth/login", { username, password })
       .then((response) => {
-        if (response) {
+        if (response && response.data && response.data.token) {
+          // Store the token in local storage
+          localStorage.setItem("token", response.data.token);
+          
           setLoggedIn(true);
           console.log(response);
+          alert("Login successful");
+
 
           //username: 'kminchelle',
           //password: '0lelplR',
-          alert("login sucessfully");
+          // Redirect to Dashboard
+          navigate("/chat");
         } else {
           alert("Invalid credentials. Please try again.");
         }
@@ -51,16 +59,13 @@ const Login = () => {
       Your browser does not support the video tag.
     </video>
       {loggedIn ? (
-      
         <div className="welcome">
-           <h2>Welcome, {username}!</h2>
-           <Link to="/"><button class="round" >Log out</button></Link>
-          
+          <h2>Welcome, {username}!</h2>
+          <Link to="/"><button className="round" >Log out</button></Link>
         </div>
       ) : (
-        <div className="login-form"
-        >
-              <h2>Login</h2>
+        <div className="login-form">
+          <h2>Login</h2>
           <label>
             Username:
             <input
@@ -88,3 +93,4 @@ const Login = () => {
 };
 
 export default Login;
+

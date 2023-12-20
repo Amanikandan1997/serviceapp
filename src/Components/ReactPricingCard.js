@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import "../App.css"
 import Hero from './Hero';
 import Header from './Header'
+import  Footer  from './Footer';
 
 
 
@@ -31,7 +32,7 @@ function ReactPricingCard() {
             </div>
         </div>
         </div>
-    
+    <Footer/>
         </>
     )
 }

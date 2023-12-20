@@ -8,7 +8,8 @@ import Dashboard from "./Components/Dashboard";
 import Admin from "./Components/Admin";
 import  Payment  from "./Components/Payment";
 //import Chatdemo from "./Components/chat"
-//import Reg from "./Components/reg";
+import Hero from "./Components/Hero";
+import { Chat } from "@mui/icons-material";
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/chat" element={<Chat/>} />
           <Route path="/pay" element={<Payment />} />
           
         </Routes>

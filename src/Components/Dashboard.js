@@ -7,6 +7,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import Footer1 from './Footer';
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -71,7 +72,7 @@ function Dashboard() {
                 background: colorBgContainer,
               }}
             >
-              Bill is a cat.
+             <Footer1/>
             </div>
           </Content>
           <Footer
@@ -79,7 +80,7 @@ function Dashboard() {
               textAlign: 'center',
             }}
           >
-         KiteCareer © 2023 Created by Manikandan U K I
+        KiteCareer © {(new Date().getFullYear())} Created by Manikandan U K I
           </Footer>
         </Layout>
       </Layout>
